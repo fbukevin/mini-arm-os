@@ -14,13 +14,15 @@ int puts(const char *str)
 
 void main(void)
 {
+	/* set up clock enable register */
 	*(RCC_APB2ENR) |= (uint32_t) (0x00000001 | 0x00000004);
 	*(RCC_APB1ENR) |= (uint32_t) (0x00020000);
 
-	/* USART2 Configuration */
+	/* GPIOA configuration */
 	*(GPIOA_CRL) = 0x00004B00;
 	*(GPIOA_CRH) = 0x44444444;
 
+	/* USART2 Configuration */
 	*(USART2_CR1) = 0x0000000C;
 	*(USART2_CR1) |= 0x2000;
 
